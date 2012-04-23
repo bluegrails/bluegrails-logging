@@ -2,7 +2,7 @@
 
 
 class LoggingGrailsPlugin {
-  def version = "2.1"
+  def version = "2.2"
   def grailsVersion = "2.0.1 > *"
   def dependsOn = [:]
 

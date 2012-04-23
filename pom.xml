@@ -5,7 +5,7 @@
   <groupId>com.bluetrainsoftware.bluegrails.plugins</groupId>
   <artifactId>grails-logging</artifactId>
   <packaging>grails-plugin</packaging>
-  <version>2.1</version>
+  <version>2.2</version>
 
   <name>Fake Grails Logging.</name>
   <description>This artifact provides a fake grails logging plugin</description>
@@ -17,11 +17,12 @@
   <dependencies>
     <!-- this provides us with grails (without having to have grails) -->
     <dependency>
-      <groupId>nz.ac.auckland.composite</groupId>
-      <artifactId>composite-grails</artifactId>
-      <version>[2.3,3)</version>
+      <groupId>org.grails</groupId>
+      <artifactId>grails-dependencies</artifactId>
+      <version>${grails.version}</version>
+      <type>pom</type>
+      <scope>provided</scope> <!-- don't filter these through, let the end product decide what it should be using -->
     </dependency>
-
   </dependencies>
 
   <build>
