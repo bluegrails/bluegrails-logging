@@ -1,42 +1,34 @@
 <!-- scan="true" scanPeriod="3 seconds" -->
 <configuration>
-  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-    <layout class="ch.qos.logback.classic.PatternLayout">
-      <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
-    </layout>
-  </appender>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
 
-  <appender name="APPLICATION" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <File>log/application.log</File>
-    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-      <level>TRACE</level>
-    </filter>
-    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <FileNamePattern>log/application.%d{yyyy-MM-dd}.log</FileNamePattern>
-      <MaxHistory>90</MaxHistory>
-    </rollingPolicy>
-    <layout class="ch.qos.logback.classic.PatternLayout">
-      <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
-    </layout>
-  </appender>
+    <appender name="APPLICATION" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>log/application.log</File>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>log/application.log.%d{yyyy-MM-dd}</FileNamePattern>
+            <MaxHistory>90</MaxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
 
 
-  <!-- Strictly speaking, the level attribute is not necessary since -->
-  <!-- the level of the root level is set to DEBUG by default.       -->
-  <root level="ERROR">
-    <appender-ref ref="APPLICATION"/>
-    <appender-ref ref="STDOUT"/>
-  </root>
+    <!-- Strictly speaking, the level attribute is not necessary since -->
+    <!-- the level of the root level is set to DEBUG by default.       -->
+    <root level="WARN">
+        <appender-ref ref="APPLICATION"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
 
-  <!--<logger name="org.grails.plugin.resource" level="DEBUG"/>-->
-  <!-- include if you want jersey -->
-  <!--<logger name="com.sun.jersey.api.client.filter.LoggingFilter" level="DBEUG"/>-->
-  <logger name="nz.ac.auckland.webservices.TracePayloadInterceptor" level="TRACE"/>
-  <logger name="org.mortbay.log" level="WARN"/>
-  <logger name="nz.ac.auckland" level="DEBUG"/>
-  <logger name="grails.app.service.nz.ac.auckland" level="DEBUG"/>
-  <logger name="grails.app.controller.nz.ac.auckland" level="DEBUG"/>
-  <!--<logger name="org.hibernate" level="DEBUG"/>-->
-  <!--<logger name="org.springframework" level="DEBUG"/>-->
-  <logger name="com.jolbox.bonecp" level="DEBUG"/>
 </configuration>

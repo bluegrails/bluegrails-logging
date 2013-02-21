@@ -1,4 +1,4 @@
-<plugin name='logging' version='2.2' grailsVersion='2.0.1 &gt; *'>
+<plugin name='logging' version='2.4' grailsVersion='2.0.1 &gt; *'>
   <author>Richard Vowles</author>
   <authorEmail>richard@bluetrainsoftware.com</authorEmail>
   <title>Fake Implementation of Grails Logging</title>
